@@ -1,0 +1,63 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "run day script",
+      "type": "shell",
+      "command": "python ${file} ./inputs/${fileBasenameNoExtension}.txt",
+      "icon": {
+        "id": "play"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": false,
+        "clear": false
+      }
+    },
+    {
+      "label": "run day script ex1",
+      "type": "shell",
+      "command": "python ${file} ./inputs/${fileBasenameNoExtension}-ex1.txt",
+      "icon": {
+        "id": "debug-alt"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": false,
+        "clear": false
+      }
+    },
+    {
+      "label": "run day script with custom input file",
+      "type": "shell",
+      "command": "python ${file} ./inputs/${input:inputFile}.txt",
+      "icon": {
+        "id": "play",
+        "color": "terminal.ansiRed"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": false,
+        "clear": false
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "inputFile",
+      "description": "name of input file to run with (without the inputs/ folder and .txt extension)"
+    }
+  ]
+}

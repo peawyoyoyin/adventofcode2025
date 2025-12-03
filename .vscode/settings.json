@@ -1,0 +1,33 @@
+{
+  "task.allowAutomaticTasks": "off",
+  "taskexplorer.enabledTasks": {
+    "npm": false,
+    "powershell": false,
+    "python": false,
+    "tsc": false,
+    "eslint": false,
+    "batch": false,
+    "bash": false,
+    "nodejs": true
+  },
+  "taskexplorer.specialFolders.showFavorites": false,
+  "taskexplorer.specialFolders.showLastTasks": false,
+  "taskexplorer.groupWithSeparator": true,
+  "taskexplorer.groupStripTaskLabel": true,
+  "taskexplorer.visual.treeNodeStateful": false,
+  "VsCodeTaskButtons.showCounter": false,
+  "VsCodeTaskButtons.tasks": [
+    {
+      "label": "run",
+      "task": "run day script"
+    },
+    {
+      "label": "run ex1",
+      "task": "run day script ex1"
+    },
+    {
+      "label": "run on file",
+      "task": "run day script with custom input file"
+    }
+  ]
+}
