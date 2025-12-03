@@ -29,5 +29,8 @@
       "label": "run on file",
       "task": "run day script with custom input file"
     }
-  ]
+  ],
+  "files.exclude": {
+    "**/__pycache__/**": true
+  }
 }
