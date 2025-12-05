@@ -32,5 +32,15 @@
   ],
   "files.exclude": {
     "**/__pycache__/**": true
-  }
+  },
+  "catppuccin-icons.associations.folders": {
+    "inputs": "folder_download"
+  },
+  "catppuccin-icons.associations.extensions": {
+    "ex.txt": "search"
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.txt": "${capture}.*.ex.txt",
+  },
 }

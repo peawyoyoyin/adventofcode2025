@@ -22,7 +22,7 @@
     {
       "label": "run day script ex1",
       "type": "shell",
-      "command": "python ${file} ./inputs/${fileBasenameNoExtension}-ex1.txt",
+      "command": "python ${file} ./inputs/${fileBasenameNoExtension}.1.ex.txt",
       "icon": {
         "id": "debug-alt"
       },
