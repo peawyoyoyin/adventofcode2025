@@ -3,9 +3,11 @@ from typing import List, Any
 from collections.abc import Callable
 import time
 
-def load_input(filename):
+def load_input(filename, strip_input):
   with open(filename) as f:
     lines = f.readlines()
+  if not strip_input:
+    return list(lines)
   return list(map(lambda l: l.strip(), lines))
 
 def format_ns(ns: int):
@@ -17,7 +19,7 @@ def format_ns(ns: int):
     return f'{ns/int(1e3)}us'
   return f'{ns}ns'
 
-def run(part1: Callable[[List[str]], Any], part2: Callable[[List[str]], Any]):
+def run(part1: Callable[[List[str]], Any], part2: Callable[[List[str]], Any], strip_input=True):
   parser = ArgumentParser()
   parser.add_argument('filename')
   parser.add_argument('-1', '--part1', action='store_true')
@@ -25,7 +27,7 @@ def run(part1: Callable[[List[str]], Any], part2: Callable[[List[str]], Any]):
 
   args = parser.parse_args()
 
-  inputs = load_input(args.filename)
+  inputs = load_input(args.filename, strip_input)
 
   if args.part1 or (not args.part1 and not args.part2):
     start = time.perf_counter_ns()
