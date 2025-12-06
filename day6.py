@@ -3,8 +3,6 @@ from utils.cli import run
 from utils.assertions import list_assert
 
 from collections import deque
-from itertools import batched
-
 
 def transpose(matrix):
   result = []
@@ -59,29 +57,34 @@ def stream_operator(operators):
       i += 1
 list_assert(list(stream_operator('+   *  ')), ['+   ', '*  '])
 
+def take(data: deque, n=1):
+  buffer = []
+  for _ in range(n):
+    buffer.append(data.popleft())
+  return buffer
+
 def parse_inputs2(inputs: List[str]):
   operands, operators = inputs[:-1], inputs[-1]
 
+  # parse operators to get widths of each problem
   parsed_operators = []
   for parsed_operator in stream_operator(operators):
     parsed_operators.append((parsed_operator.strip(), len(parsed_operator)))
 
+  # parse operands using the problem widths
   parsed_operands_1 = []
-  for line in operands:
-    problem_index = 0
-    stream = deque(line)
-
+  for index, line in enumerate(operands):
     parsed_line = []
+    stream = deque(line)
     for problem_index in range(len(parsed_operators)):
-      buffer = []
-      for _ in range(parsed_operators[problem_index][1]):
-        buffer.append(stream.popleft())
-      parsed_line.append(''.join(buffer))
+      problem_width = parsed_operators[problem_index][1]
+      parsed_line.append(''.join(take(stream, problem_width)))
     parsed_operands_1.append(parsed_line)
-  parsed_operands_2 = transpose(parsed_operands_1)
+  parsed_operands = transpose(parsed_operands_1)
   
+  # filter empty operands after transpose, then append operators after each set of operands
   parsed = []
-  for index, line in enumerate(parsed_operands_2):
+  for index, line in enumerate(parsed_operands):
     parsed_line = []
     for operand in transpose(line):
       token = ''.join(operand)
@@ -100,4 +103,4 @@ def part2(inputs: List[str]):
   return result
 
 if __name__ == '__main__':
-  run(part1, part2, False)
+  run(part1, part2, strip_input=False)
