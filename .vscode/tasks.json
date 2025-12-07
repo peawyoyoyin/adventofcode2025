@@ -16,7 +16,7 @@
         "focus": false,
         "panel": "dedicated",
         "showReuseMessage": false,
-        "clear": false
+        "clear": true
       }
     },
     {
@@ -32,7 +32,7 @@
         "focus": false,
         "panel": "dedicated",
         "showReuseMessage": false,
-        "clear": false
+        "clear": true
       }
     },
     {
