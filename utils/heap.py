@@ -12,7 +12,10 @@ class Heap:
     heapq.heappush(self._data, item)
 
   def pop(self):
-    return heapq.heappop(self)
+    return heapq.heappop(self._data)
   
   def __getitem__(self, key):
     return self._data[key]
+  
+  def __len__(self):
+    return len(self._data)

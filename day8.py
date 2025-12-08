@@ -24,7 +24,7 @@ def part1(inputs: List[str]):
     for j, p2 in enumerate(points):
       if i >= j:
         continue
-      distances.push(distances, (dist2(p1, p2), i, j))
+      distances.push((dist2(p1, p2), i, j))
 
   groups = UnionFind(len(inputs))
   
@@ -52,7 +52,7 @@ def part1(inputs: List[str]):
 
 def part2(inputs: List[str]):
   points = parse_inputs(inputs)
-  distances = []
+  distances = Heap()
   for i, p1 in enumerate(points):
     for j, p2 in enumerate(points):
       if i >= j:
@@ -67,7 +67,7 @@ def part2(inputs: List[str]):
     groups.union(i, j)
     last_i, last_j = i, j
   
-  sizes = []
+  sizes = Heap()
   for group in groups.unique_groups():
     group_size = groups.size(group)
     if len(sizes) < 3:
